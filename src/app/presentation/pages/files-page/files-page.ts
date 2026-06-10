@@ -1,7 +1,17 @@
 import { Component } from '@angular/core';
-import { File } from '@awesome-cordova-plugins/file/ngx';
-import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { UtilsService } from 'src/app/shared/utils/utils-service';
+
+import {
+  Directory,
+  Filesystem,
+  GetUriResult
+} from '@capacitor/filesystem';
+
+import {
+  FileTransfer
+} from '@capacitor/file-transfer';
+
+import { FileViewer } from "@capacitor/file-viewer";
 
 @Component({
   selector: 'app-files-page',
@@ -10,57 +20,51 @@ import { UtilsService } from 'src/app/shared/utils/utils-service';
 })
 export class FilesPage {
 
-  fileName: string = 'demo.txt';
-  fileContent: string = '';
-  readContent: string = '';
+  samplePdfUrl: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+  fileName: string = 'sample.pdf';
 
   constructor(
-    private file: File,
-    private fileOpener: FileOpener,
     private ui: UtilsService
   ) {}
 
-  async downloadFile() {
+  async startDownloading() {
     try {
-
-      const path = this.file.dataDirectory + this.fileName;
-
-      console.log('Descargando en:', path);
-
-      console.log('Descarga completada');
-
-    } catch (error) {
-      console.error('Error descarga:', error);
+      await this.downloadPdf();
+      await this.openFile();
+    } catch(error) {
+      console.error(error);
+      await this.ui.showInfoAlert({
+        title: 'Error',
+        content: 'No fue posible descargar el archivo'
+      });
     }
   }
 
-  async readFile() {
-    try {
+  async downloadPdf() {
+    const target = await Filesystem.getUri({
+      directory: Directory.Documents,
+      path: this.fileName
+    });
 
-      const path = this.file.dataDirectory;
+    console.log('Destino:', target.uri);
 
-      const content = await this.file.readAsText(path, this.fileName);
+    const result = await FileTransfer.downloadFile({
+      url: this.samplePdfUrl,
+      path: target.uri,
+      progress: true
+    });
 
-      this.readContent = content;
-
-      this.ui.showInfoAlert({
-        title: 'Files',
-        content: 'File loaded'
-      })
-
-    } catch (error) {
-      console.error('Error leyendo archivo:', error);
-    }
+    console.log(result);
   }
 
-  async listFiles() {
-    try {
+  async openFile() {
+    const file = await Filesystem.getUri({
+      directory: Directory.Documents,
+      path: this.fileName
+    });
 
-      const files = await this.file.listDir(this.file.dataDirectory, '');
-
-    } catch (error) {
-      console.error('Error listando archivos:', error);
-    }
+    await FileViewer.openDocumentFromLocalPath({
+      path: file.uri
+    });
   }
-
 }

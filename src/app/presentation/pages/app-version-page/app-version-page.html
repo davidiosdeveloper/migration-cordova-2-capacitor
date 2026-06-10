@@ -10,7 +10,7 @@
 
     <ion-item>
       <ion-label>App version</ion-label>
-      <ion-note slot="end">{{ version }}</ion-note>
+      <ion-note slot="end">{{ app.version }}</ion-note>
     </ion-item>
 
     <ion-item>
@@ -30,7 +30,7 @@
 
     <ion-item>
       <ion-label>Versión OS</ion-label>
-      <ion-note slot="end">{{ info.version }}</ion-note>
+      <ion-note slot="end">{{ info.iOSVersion ?? info.androidSDKVersion }}</ion-note>
     </ion-item>
 
     <ion-item>

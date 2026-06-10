@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-status-bar',
@@ -10,35 +10,51 @@ export class StatusBarPage {
 
   public color: string = '#3880ff';
 
-  constructor(private statusBar: StatusBar) {}
+  constructor() {
+    // iOS only: UIViewControllerBasedStatusBarAppearance set to YES in Info.plist required!
+    window.addEventListener('statusTap', function () {
+      console.log('statusbar tapped');
+    });
+
+    // Android ony
+    this.configAndroid();
+  }
 
   ionViewDidEnter() {
     this.applyDefaultStyle();
   }
 
-  changeColor() {
-    this.statusBar.backgroundColorByHexString(this.color);
+  async configAndroid() {
+    await StatusBar.setOverlaysWebView({
+      overlay: false
+    });
   }
 
-  setDarkStyle() {
-    this.statusBar.styleLightContent();
+  async changeColor() {
+    await StatusBar.setBackgroundColor({ 
+      color: this.color 
+    });
   }
 
-  setLightStyle() {
-    this.statusBar.styleDefault();
+  async setDarkStyle() {
+    console.log('$$$ Setting darkmode')
+    await StatusBar.setStyle({ style: Style.Dark });
   }
 
-  hide() {
-    this.statusBar.hide();
+  async setLightStyle() {
+    await StatusBar.setStyle({ style: Style.Light });
   }
 
-  show() {
-    this.statusBar.show();
+  async hide() {
+    await StatusBar.hide();
   }
 
-  applyDefaultStyle() {
-    this.statusBar.show();
-    this.statusBar.styleDefault();
-    this.statusBar.backgroundColorByHexString('#000000');
+  async show() {
+    await StatusBar.show();
+  }
+
+  async applyDefaultStyle() {
+    await this.show();
+    await this.setLightStyle();
   }
 }

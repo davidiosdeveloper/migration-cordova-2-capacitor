@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { UtilsService } from 'src/app/shared/utils/utils-service';
+
+import { Capacitor } from '@capacitor/core';
+import { Share } from '@capacitor/share';
+import { AppLauncher } from '@capacitor/app-launcher';
 
 @Component({
   selector: 'app-socialsharing-page',
@@ -9,30 +12,45 @@ import { UtilsService } from 'src/app/shared/utils/utils-service';
 })
 export class SocialsharingPage {
 
-  constructor(private socialSharing: SocialSharing, private ui: UtilsService) { }
+  constructor(private ui: UtilsService) { }
 
   public async shareData() {
-      await this.socialSharing.share(
-        'Hola desde mi PoC Ionic + Cordova',
-        'Prueba Social Sharing',
-        '',
-        'https://ionicframework.com'
-      ).catch(() => {
+      await Share.share({
+        title: 'Prueba Social Sharing',
+        text: 'Hola desde mi PoC Ionic + Capacitor',
+        url: 'https://ionicframework.com',
+        dialogTitle: 'Compartir'
+      }).catch(() => {
         this.ui.showInfoAlert({title: 'Error', content: 'Ocurrió un error al momento de compartir los datos.'});
       });
   }
 
   public async shareOnWhatsApp() {
     try {
-      await this.socialSharing.shareViaWhatsApp(
-        'Mensaje de prueba',
-        '',
-        'https://ionicframework.com'
-      );
+
+      if (Capacitor.getPlatform() === 'android') {
+
+        const result = await AppLauncher.canOpenUrl({
+          url: 'com.whatsapp'
+        });
+
+        if (!result.value) {
+          this.ui.showInfoAlert({title: 'Error', content: 'Whatsapp not installed.'});
+        }
+      }
+
+      const message =
+        encodeURIComponent('Testing message');
+
+      await AppLauncher.openUrl({
+        url: `https://wa.me/?text=${message}`
+      });
+
     } catch (error) {
+
       await this.ui.showInfoAlert({
-        title: 'WhatsApp no disponible',
-        content: 'No se pudo abrir WhatsApp.'
+        title: 'Error',
+        content: 'WhatsApp not available'
       });
     }
   }

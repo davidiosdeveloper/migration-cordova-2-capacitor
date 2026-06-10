@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared-module';
 import { AppHeaderComponent } from 'src/app/shared/app-header/app-header.component';
 import { StatusBarPageRoutingModule } from './status-bar-page-routing.module';
-import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 
 @NgModule({
   imports: [
@@ -19,7 +18,6 @@ import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
   ],
   declarations: [StatusBarPage],
   providers: [
-    StatusBar,
     AppHeaderComponent
   ]
 })

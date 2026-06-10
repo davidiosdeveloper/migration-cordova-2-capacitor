@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
-import { Device } from '@awesome-cordova-plugins/device/ngx';
+import { Device } from '@capacitor/device';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'app-app-version-page',
@@ -9,10 +9,10 @@ import { Device } from '@awesome-cordova-plugins/device/ngx';
 })
 export class AppVersionPage {
 
-  public version: string = '';
+  public app: any = {};
   public info: any = {};
 
-  constructor(private appVersion: AppVersion, private device: Device) {}
+  constructor() {}
 
   ionViewDidEnter() {
     this.loadVersion();
@@ -20,24 +20,14 @@ export class AppVersionPage {
   }
 
   async loadVersion() {
-    try {
-      const versionNumber = await this.appVersion.getVersionNumber();
-      this.version = versionNumber;
-
-    } catch (error) {
-      console.error('Error obteniendo versión:', error);
-      this.version = 'N/A';
-    }
+    this.app = await App.getInfo();
+    console.log('App Version:', this.app.version);
+    console.log('Build Number:', this.app.build);
+    console.log('Bundle ID:', this.app.id);
+    console.log('App Name:', this.app.name);
   }
 
-  private loadDeviceInfo() {
-    this.info = {
-      model: this.device.model,
-      platform: this.device.platform,
-      uuid: this.device.uuid,
-      version: this.device.version,
-      manufacturer: this.device.manufacturer,
-      isVirtual: this.device.isVirtual
-    };
+  private async loadDeviceInfo() {
+    this.info = await Device.getInfo();
   }
 }

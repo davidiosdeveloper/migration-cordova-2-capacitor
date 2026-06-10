@@ -60,6 +60,12 @@ const routes: Routes = [
       import('./presentation/pages/socialsharing-page/socialsharing-page.module')
         .then(m => m.SocialSharingPageModule)
   },
+  {
+    path: 'firebase',
+    loadChildren: () =>
+      import('./presentation/pages/firebase-page/firebase-page.module')
+        .then(m => m.FirebasePageModule)
+  },
 ];
 
 @NgModule({

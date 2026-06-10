@@ -1,0 +1,38 @@
+<app-header
+  title="Firebase"
+  [showBackButton]="true"
+  defaultHref="/home">
+</app-header>
+
+<ion-content>
+
+  <ion-button expand="block"
+              (click)="testAnalytics()">
+    Log Event
+  </ion-button>
+
+  <ion-button expand="block"
+              (click)="setScreen()">
+    Set Screen
+  </ion-button>
+
+  <ion-button expand="block"
+              (click)="setUser()">
+    Set User
+  </ion-button>
+
+  <ion-button expand="block"
+              (click)="requestPermission()">
+    Request Permission
+  </ion-button>
+
+  <ion-button expand="block"
+              (click)="getToken()">
+    Get Token
+  </ion-button>
+
+  <ion-text>
+    {{ token }}
+  </ion-text>
+
+</ion-content>

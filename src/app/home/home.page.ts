@@ -41,6 +41,10 @@ export class HomePage {
       title: 'Social sharing',
       route: '/socialsharing'
     },
+    {
+      title: 'Firebase',
+      route: '/firebase'
+    },
   ];
 
   constructor() {}

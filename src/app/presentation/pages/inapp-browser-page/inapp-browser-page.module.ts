@@ -1,4 +1,3 @@
-import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { InappBrowserPage } from './inapp-browser-page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +16,6 @@ import { InAppBrowserPageRoutingModule } from './inapp-browser-page-routing.modu
   ],
   declarations: [InappBrowserPage],
   providers: [
-    InAppBrowser,
     AppHeaderComponent
   ]
 })

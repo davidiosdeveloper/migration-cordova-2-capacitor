@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { Clipboard } from '@awesome-cordova-plugins/clipboard/ngx';
-import { AlertController } from '@ionic/angular';
-import { Message } from 'src/app/core/models/message-model';
-import { UtilsService } from 'src/app/shared/utils/utils-service';
+import { Clipboard } from '@capacitor/clipboard';
 
 @Component({
   selector: 'app-clipboard-page',
@@ -14,24 +11,17 @@ export class ClipboardPage {
   pastedText: string = '';
 
   constructor(
-    private clipboard: Clipboard,
-    private ui: UtilsService
+    private clipboard: Clipboard
   ) {}
 
   async copyText() {
-    try {
-      await this.clipboard.copy(this.textToCopy);
-    } catch (error) {
-      console.error('Error copiando texto:', error);
-    }
+    await Clipboard.write({
+      string: this.textToCopy
+    });
   }
 
   async pasteText() {
-    try {
-      const text = await this.clipboard.paste();
-      this.pastedText = text;
-    } catch (error) {
-      console.error('Error pegando texto:', error);
-    }
+    const { type, value } = await Clipboard.read();
+    this.pastedText = value;
   }
 }

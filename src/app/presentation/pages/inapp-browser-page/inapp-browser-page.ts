@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+// import { DefaultWebViewOptions, InAppBrowser } from '@capacitor/inappbrowser';
 
 @Component({
   selector: 'app-inapp-browser-page',
@@ -8,17 +8,17 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 })
 export class InappBrowserPage {
 
-  constructor(private iab: InAppBrowser) {
-    this.openGoogle();
+  async ionViewDidEnter() {
+    await this.openGoogle();
   }
 
-  openGoogle() {
-    this.iab.create('https://google.com', '_blank');
+  async openGoogle() {
+    /*await InAppBrowser.openInWebView({
+      url: 'https://google.com',
+      options: DefaultWebViewOptions
+    });*/
   }
-
 }
-
-
 
 
 
