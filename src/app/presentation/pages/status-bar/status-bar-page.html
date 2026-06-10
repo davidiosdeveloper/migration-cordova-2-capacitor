@@ -1,0 +1,38 @@
+<app-header
+  title="Status Bar"
+  [showBackButton]="true"
+  defaultHref="/home">
+</app-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-label position="stacked">Status Bar color</ion-label>
+    <ion-input [(ngModel)]="color" placeholder="#3880ff"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="changeColor()">
+    Change color
+  </ion-button>
+
+  <ion-button expand="block" color="dark" (click)="setDarkStyle()">
+    Set white text (dark mode)
+  </ion-button>
+
+  <ion-button expand="block" color="light" (click)="setLightStyle()">
+    Set black text (light mode)
+  </ion-button>
+
+  <ion-button expand="block" color="medium" (click)="hide()">
+    Hide status bar
+  </ion-button>
+
+  <ion-button expand="block" color="primary" (click)="show()">
+    Show status bar
+  </ion-button>
+
+  <ion-button expand="block" color="danger" (click)="applyDefaultStyle()">
+    Reset
+  </ion-button>
+
+</ion-content>

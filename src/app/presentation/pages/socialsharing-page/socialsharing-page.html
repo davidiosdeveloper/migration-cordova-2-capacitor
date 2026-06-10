@@ -1,0 +1,15 @@
+<app-header
+  title="Social sharing"
+  [showBackButton]="true"
+  defaultHref="/home">
+</app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="block" (click)="shareData()">
+    Share data
+  </ion-button>
+  <ion-button expand="block" (click)="shareOnWhatsApp()">
+    Share data on whatsapp
+  </ion-button>
+</ion-content>
+

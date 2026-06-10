@@ -1,0 +1,28 @@
+<app-header
+  title="Clipboard"
+  [showBackButton]="true"
+  defaultHref="/home">
+</app-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Text to copy</ion-label>
+    <ion-input [(ngModel)]="textToCopy"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="copyText()">
+    Copy to clipboard
+  </ion-button>
+
+  <ion-button expand="block" color="secondary" (click)="pasteText()">
+    Paste from clipboard
+  </ion-button>
+
+  <ion-item *ngIf="pastedText">
+    <ion-label>
+      Pasted: {{ pastedText }}
+    </ion-label>
+  </ion-item>
+
+</ion-content>

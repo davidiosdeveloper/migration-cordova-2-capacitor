@@ -1,0 +1,35 @@
+<app-header
+  title="Hardware / Network"
+  [showBackButton]="true"
+  defaultHref="/home">
+</app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item
+      button
+      *ngFor="let test of tests"
+      (click)="performTest(test)"
+      >
+      <ion-label>
+        {{ test.title }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Network status: </ion-label>
+      <ion-note slot="end">{{ status }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Network type: </ion-label>
+      <ion-note slot="end">{{ type }}</ion-note>
+    </ion-item>
+
+  </ion-list>
+
+
+  <img *ngIf="photo" [src]="photo">
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cordova to capacitor migration
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item
+      button
+      *ngFor="let test of tests"
+      [routerLink]="test.route">
+
+      <ion-label>
+        {{ test.title }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

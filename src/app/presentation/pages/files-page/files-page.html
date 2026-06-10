@@ -1,0 +1,41 @@
+<app-header
+  title="Files management"
+  [showBackButton]="true"
+  defaultHref="/home">
+</app-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Nombre archivo</ion-label>
+    <ion-input [(ngModel)]="fileName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Contenido</ion-label>
+    <ion-textarea [(ngModel)]="fileContent"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="readFile()">
+    Crear / Guardar archivo
+  </ion-button>
+
+  <ion-button expand="block" color="secondary" (click)="readFile()">
+    Leer archivo
+  </ion-button>
+
+  <ion-button expand="block" color="tertiary" (click)="listFiles()">
+    Listar archivos
+  </ion-button>
+
+  <ion-card *ngIf="readContent">
+    <ion-card-header>
+      <ion-card-title>Contenido leído</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ readContent }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
