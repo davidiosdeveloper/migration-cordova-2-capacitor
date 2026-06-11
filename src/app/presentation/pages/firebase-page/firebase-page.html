@@ -4,7 +4,7 @@
   defaultHref="/home">
 </app-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   <ion-button expand="block"
               (click)="testAnalytics()">
@@ -31,7 +31,9 @@
     Get Token
   </ion-button>
 
-  <ion-text>
+  <ion-text *ngIf="token">
+    <strong>Token</strong>
+    <hr>
     {{ token }}
   </ion-text>
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "32828741420",
+    "project_id": "ilbd-db",
+    "storage_bucket": "ilbd-db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32828741420:android:ceb7059b9023525071be89",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIHljpOwqWjiXahIMPr2JoN3A0lLM61ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

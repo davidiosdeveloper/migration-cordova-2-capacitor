@@ -1,2 +1,70 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+
+:root {
+
+  --ion-color-dark: #ffffff;
+  --ion-color-dark-rgb: 255,255,255;
+  --ion-color-dark-contrast: #38c6c1;
+  --ion-color-dark-contrast-rgb: 56,198,193;
+
+  --ion-color-light: #38c6c1;
+  --ion-color-light-rgb: 56,198,193;
+  --ion-color-light-contrast: #ffffff;
+  --ion-color-light-contrast-rgb: 255,255,255;
+
+  --ion-color-medium: #e8e8e8;
+  --ion-color-medium-rgb: 232,232,232;
+  --ion-color-medium-contrast: #6c6c6c;
+  --ion-color-medium-contrast-rgb: 108,108,108;
+
+  --ion-color-outline: #ffffff;
+  --ion-color-outline-rgb: 255,255,255;
+  --ion-color-outline-contrast: #38c6c1;
+
+  --ion-color-filled: #38c6c1;
+  --ion-color-filled-rgb: 56,198,193;
+  --ion-color-filled-contrast: #ffffff;
+}
+
+ion-button[color="dark"] {
+  --background: white;
+  --color: #38c6c1;
+
+  --border-color: #bdbdbd;
+  --border-style: solid;
+  --border-width: 2px;
+
+  --border-radius: 999px;
+}
+
+ion-button[color="light"] {
+  --background: #38c6c1;
+  --color: white;
+
+  --border-radius: 999px;
+}
+
+ion-button[color="medium"] {
+  --background: #e8e8e8;
+  --color: #6c6c6c;
+
+  --border-radius: 999px;
+}
+
+ion-button[color="primary"] {
+  --background: white;
+  --color: #38c6c1;
+
+  --border-color: #bdbdbd;
+  --border-style: solid;
+  --border-width: 2px;
+
+  --border-radius: 999px;
+}
+
+ion-button {
+  --border-radius: 999px;
+  min-height: 52px;
+  font-weight: 600;
+}
