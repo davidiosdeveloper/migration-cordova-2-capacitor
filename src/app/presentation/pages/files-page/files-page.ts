@@ -14,9 +14,10 @@ import {
 import { FileViewer } from "@capacitor/file-viewer";
 
 @Component({
-  selector: 'app-files-page',
-  templateUrl: './files-page.html',
-  styleUrls: ['./files-page.scss'],
+    selector: 'app-files-page',
+    templateUrl: './files-page.html',
+    styleUrls: ['./files-page.scss'],
+    standalone: false
 })
 export class FilesPage {
 

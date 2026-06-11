@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
-  selector: 'app-status-bar',
-  templateUrl: './status-bar-page.html',
-  styleUrls: ['./status-bar-page.scss'],
+    selector: 'app-status-bar',
+    templateUrl: './status-bar-page.html',
+    styleUrls: ['./status-bar-page.scss'],
+    standalone: false
 })
 export class StatusBarPage {
 

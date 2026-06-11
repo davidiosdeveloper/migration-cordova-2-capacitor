@@ -4,9 +4,10 @@ import { FirebaseMessaging } from '@capacitor-firebase/messaging';
 import { UtilsService } from 'src/app/shared/utils/utils-service';
 
 @Component({
-  selector: 'app-firebase-page',
-  templateUrl: './firebase-page.html',
-  styleUrls: ['./firebase-page.scss'],
+    selector: 'app-firebase-page',
+    templateUrl: './firebase-page.html',
+    styleUrls: ['./firebase-page.scss'],
+    standalone: false
 })
 export class FirebasePage {
 

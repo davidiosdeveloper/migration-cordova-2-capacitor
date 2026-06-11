@@ -3,9 +3,10 @@ import { Device } from '@capacitor/device';
 import { App } from '@capacitor/app';
 
 @Component({
-  selector: 'app-app-version-page',
-  templateUrl: './app-version-page.html',
-  styleUrls: ['./app-version-page.scss'],
+    selector: 'app-app-version-page',
+    templateUrl: './app-version-page.html',
+    styleUrls: ['./app-version-page.scss'],
+    standalone: false
 })
 export class AppVersionPage {
 

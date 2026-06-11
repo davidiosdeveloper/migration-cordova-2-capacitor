@@ -3,9 +3,10 @@ import { UtilsService } from 'src/app/shared/utils/utils-service';
 import { NativeBiometric } from "@capgo/capacitor-native-biometric";
 
 @Component({
-  selector: 'app-fingerprint-aio-page',
-  templateUrl: './fingerprint-aio-page.html',
-  styleUrls: ['./fingerprint-aio-page.scss'],
+    selector: 'app-fingerprint-aio-page',
+    templateUrl: './fingerprint-aio-page.html',
+    styleUrls: ['./fingerprint-aio-page.scss'],
+    standalone: false
 })
 export class FingerprintAioPage {
 

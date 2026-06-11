@@ -8,9 +8,10 @@ import { BleClient } from '@capacitor-community/bluetooth-le';
 import { Network } from '@capacitor/network';
 
 @Component({
-  selector: 'app-hardware-page',
-  templateUrl: './hardware-page.html',
-  styleUrls: ['./hardware-page.scss'],
+    selector: 'app-hardware-page',
+    templateUrl: './hardware-page.html',
+    styleUrls: ['./hardware-page.scss'],
+    standalone: false
 })
 export class HardwarePage {
 

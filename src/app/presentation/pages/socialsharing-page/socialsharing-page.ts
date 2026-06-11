@@ -6,9 +6,10 @@ import { Share } from '@capacitor/share';
 import { AppLauncher } from '@capacitor/app-launcher';
 
 @Component({
-  selector: 'app-socialsharing-page',
-  templateUrl: './socialsharing-page.html',
-  styleUrls: ['./socialsharing-page.scss'],
+    selector: 'app-socialsharing-page',
+    templateUrl: './socialsharing-page.html',
+    styleUrls: ['./socialsharing-page.scss'],
+    standalone: false
 })
 export class SocialsharingPage {
 
