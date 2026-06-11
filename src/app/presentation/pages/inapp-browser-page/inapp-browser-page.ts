@@ -13,10 +13,6 @@ export class InappBrowserPage {
   }
 
   async openGoogle() {
-    /*await InAppBrowser.openInWebView({
-      url: 'https://google.com',
-      options: DefaultWebViewOptions
-    });*/
   }
 }
 

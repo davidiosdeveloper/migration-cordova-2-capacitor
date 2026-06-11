@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { Diagnostic } from '@awesome-cordova-plugins/diagnostic/ngx';
-import { LocationAccuracy } from '@awesome-cordova-plugins/location-accuracy/ngx';
-import { OpenNativeSettings } from '@awesome-cordova-plugins/open-native-settings/ngx';
-import { Network } from '@awesome-cordova-plugins/network/ngx';
 import { ListItem } from 'src/app/core/models/item-model';
 import { UtilsService } from 'src/app/shared/utils/utils-service';
 
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { BleClient } from '@capacitor-community/bluetooth-le';
+import { Network } from '@capacitor/network';
 
 @Component({
   selector: 'app-hardware-page',
@@ -28,13 +25,7 @@ export class HardwarePage {
   public status = 'unknown';
   public type = 'unknown';
 
-  constructor(
-    private diagnostic: Diagnostic,
-    private locationAccuracy: LocationAccuracy,
-    private openSettings: OpenNativeSettings,
-    private network: Network,
-    private ui: UtilsService
-  ) {}
+  constructor(private ui: UtilsService) {}
 
   ionViewDidEnter() {
     this.listenNetwork();
@@ -56,16 +47,15 @@ export class HardwarePage {
   }
 
   listenNetwork() {
-    this.status = this.network.type !== 'none' ? 'online' : 'offline';
-    this.type = this.network.type;
-
-    this.network.onConnect().subscribe(() => {
-      this.status = 'online';
+    Network.addListener('networkStatusChange', status => {
+      console.log('Network status changed', status);
     });
 
-    this.network.onDisconnect().subscribe(() => {
-      this.status = 'offline';
-    });
+    const logCurrentNetworkStatus = async () => {
+      const status = await Network.getStatus();
+      this.status = status.connected ? 'online' : 'offline';
+      this.type = status.connectionType;
+    };
   }
 
   async checkLocationEnabled() {
@@ -114,7 +104,7 @@ export class HardwarePage {
           content: 'Debes activar Bluetooth para continuar.'
         });
 
-        this.openSettings.open('bluetooth');
+        // this.openSettings.open('bluetooth');
         return;
       }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FingerprintAIO } from '@awesome-cordova-plugins/fingerprint-aio/ngx';
 import { UtilsService } from 'src/app/shared/utils/utils-service';
+import { NativeBiometric } from "@capgo/capacitor-native-biometric";
 
 @Component({
   selector: 'app-fingerprint-aio-page',
@@ -9,21 +9,14 @@ import { UtilsService } from 'src/app/shared/utils/utils-service';
 })
 export class FingerprintAioPage {
 
-  constructor(private faio: FingerprintAIO, private ui: UtilsService) {}
+  constructor(private ui: UtilsService) {}
 
   public async authenticate() {
     try {
 
-      const available = await this.faio.isAvailable();
-
-      console.log('Biometría disponible:', available);
-
-      await this.faio.show({
-        title: 'Auth required',
-        subtitle: 'Access with touch id / face id',
-        description: 'Use your biometric info to continue',
-        fallbackButtonTitle: 'Use PIN',
-        disableBackup: false
+      await NativeBiometric.verifyIdentity({
+        reason: "Authenticate to access your account",
+        title: "Biometric Login",
       });
 
       await this.ui.showInfoAlert({

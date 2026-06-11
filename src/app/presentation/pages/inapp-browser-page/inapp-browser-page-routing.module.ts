@@ -1,4 +1,3 @@
-import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { InappBrowserPage } from './inapp-browser-page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

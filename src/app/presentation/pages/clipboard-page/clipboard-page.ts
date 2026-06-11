@@ -10,9 +10,7 @@ export class ClipboardPage {
   textToCopy: string = 'Add some text to copy to clipboard';
   pastedText: string = '';
 
-  constructor(
-    private clipboard: Clipboard
-  ) {}
+  constructor() {}
 
   async copyText() {
     await Clipboard.write({
