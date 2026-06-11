@@ -13,7 +13,6 @@ import { FirebasePageRoutingModule } from './firebase-page.routing.module';
     CommonModule,
     IonicModule,
     SharedModule,
-    FormsModule,
     FirebasePageRoutingModule
   ],
   declarations: [FirebasePage],

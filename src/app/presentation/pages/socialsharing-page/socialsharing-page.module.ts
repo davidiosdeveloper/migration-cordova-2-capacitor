@@ -12,7 +12,6 @@ import { SocialSharingPageRoutingModule } from './socialsharing-page.routing.mod
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     SharedModule,
     SocialSharingPageRoutingModule

@@ -12,9 +12,9 @@ import { ClipboardPageRoutingModule } from './clipboard-page.routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     SharedModule,
+    FormsModule,
     ClipboardPageRoutingModule
   ],
   declarations: [ClipboardPage],

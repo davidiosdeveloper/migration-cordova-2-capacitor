@@ -3,7 +3,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.example.app',
   appName: 'ionic6-lab',
-  webDir: 'www',
+  webDir: 'www/browser',
   cordova: {
     preferences: {
       ScrollEnabled: 'false',

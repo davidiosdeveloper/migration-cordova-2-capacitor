@@ -12,7 +12,6 @@ import { FingerprintAioPageRoutingModule } from './fingerprint-aio-page.routing.
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     SharedModule,
     FingerprintAioPageRoutingModule

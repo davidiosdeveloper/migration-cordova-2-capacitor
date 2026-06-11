@@ -50,12 +50,12 @@ export class HardwarePage {
   listenNetwork() {
     Network.addListener('networkStatusChange', status => {
       console.log('Network status changed', status);
+      this.status = status.connected ? 'online' : 'offline';
+      this.type = status.connectionType;
     });
 
     const logCurrentNetworkStatus = async () => {
       const status = await Network.getStatus();
-      this.status = status.connected ? 'online' : 'offline';
-      this.type = status.connectionType;
     };
   }
 

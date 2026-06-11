@@ -12,7 +12,6 @@ import { HardwarePageRoutingModule } from './hardware-page-routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     IonicModule,
     SharedModule,
     HardwarePageRoutingModule
